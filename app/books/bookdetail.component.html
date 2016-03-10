@@ -37,11 +37,16 @@
             <div class="media-left">
                 <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
             </div>
-            <form #form="ngForm" (ngSubmit)="saveNote(form.value)" class="media-body">
-                <h4 class="media-heading"><input ngControl="noteTitle" type="text" class="form-control" placeholder="Note title...">
-                    <input ngControl="noteAuthor" type="text" class="margin-top-05 form-control" placeholder="Author..."></h4>
+            <form #form="ngForm"
+                  (ngSubmit)="saveNote(form.value)"
+                  *ngIf="formActive"
+                  class="media-body">
+
+                <h4 class="media-heading">
+                    <input ngControl="noteTitle" [(ngModel)]="note.title" type="text" class="form-control" placeholder="Note title...">
+                    <input ngControl="noteAuthor" [(ngModel)]="note.author" type="text" class="margin-top-05 form-control" placeholder="Author..."></h4>
                 <div class="input-group">
-                    <input ngControl="noteText" type="text" class="form-control" placeholder="Note...">
+                    <input ngControl="noteText" [(ngModel)]="note.note" type="text" class="form-control" placeholder="Note...">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">Save Note!</button>
                     </span>
@@ -57,7 +62,7 @@
                 <p>{{ note.note }}</p>
             </div>
             <div class="media-right">
-                <!--<span (click)="vm.deleteNote(note._id)" class="margin-left-05 glyphicon glyphicon-trash"></span>-->
+                <span (click)="deleteNote(note.id)" class="margin-left-05 glyphicon glyphicon-trash"></span>
             </div>
         </div>
     </div>

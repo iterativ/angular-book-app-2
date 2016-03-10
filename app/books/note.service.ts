@@ -24,7 +24,7 @@ export class NoteService {
     //    return this.noteList;
     //}
 
-    saveNote(bookId:Number, title:string, author:String, text:String) {
+    saveNote(bookId:Number, title:string, author:String, text:String):INote[]  {
         let newNote = {
             id: this.index,
             bookId: bookId,
@@ -37,8 +37,14 @@ export class NoteService {
         return this.listNotes(bookId);
     }
 
-    delete(noteId) {
-        this.noteList = _.remove(this.noteList, note => note.id === noteId);
+    deleteNote(noteId):INote[] {
+        console.log(noteId);
+        _.remove(this.noteList, (note) => {
+            console.log(note, noteId);
+            return note.id === noteId
+        });
+        console.log(this.noteList);
+        return this.noteList;
     }
 }
 
