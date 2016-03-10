@@ -1,0 +1,36 @@
+<div *ngIf="book">
+    <img class="book-thumbnail" (click)="clickImage()" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"/>
+
+    <div class="book-details">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {{ book.volumeInfo.title }}
+                </h3>
+            </div>
+            <div class="panel-body" ng-hide="collapsed">
+                <p>
+                    {{ book.volumeInfo.publishedDate}}
+                    <br/>
+
+                    <br/>
+                    {{ book.volumeInfo.publisher }}
+                </p>
+
+                <p [innerHTML]="book.searchInfo.textSnippet"></p>
+            </div>
+        </div>
+
+        <button (click)="download()" type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-download">&nbsp;Download</span>
+        </button>
+
+        <button (click)="listNotes()" type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-paperclip">&nbsp;List</span>
+        </button>
+
+
+
+    </div>
+
+</div>

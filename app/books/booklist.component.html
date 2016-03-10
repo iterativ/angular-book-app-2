@@ -1,0 +1,11 @@
+<div class="books-list">
+    <form>
+        <input [(ngModel)]="filter" class="form-control" placeholder="title filter">
+        <br/>
+        <ul>
+            <li *ngFor="#book of books | search:filter">
+                <a [routerLink]="['BookDetail', { id: book.id }]">{{book.title}}</a>
+            </li>
+        </ul>
+    </form>
+</div>

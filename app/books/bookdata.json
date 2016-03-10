@@ -1,0 +1,16 @@
+[{
+  "id": 1,
+  "title": "JavaScript: The Good Parts",
+  "author": "Douglas Crockford",
+  "isbn": "0596517742"
+}, {
+  "id": 2,
+  "title": "Effective JavaScript",
+  "author": "David Herman",
+  "isbn": "0321812182"
+}, {
+  "id": 3,
+  "title": "The Principles of Object-Oriented JavaScript",
+  "author": "Nicholas C. Zakas",
+  "isbn": "1593275404"
+}]
