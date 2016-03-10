@@ -28,9 +28,38 @@
         <button (click)="listNotes()" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-paperclip">&nbsp;List</span>
         </button>
+    </div>
 
+    <h3>Notes</h3>
 
-
+    <div class="bs-example" data-example-id="media-alignment">
+        <div class="media">
+            <div class="media-left">
+                <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
+            </div>
+            <form #form="ngForm" (ngSubmit)="saveNote(form.value)" class="media-body">
+                <h4 class="media-heading"><input ngControl="noteTitle" type="text" class="form-control" placeholder="Note title...">
+                    <input ngControl="noteAuthor" type="text" class="margin-top-05 form-control" placeholder="Author..."></h4>
+                <div class="input-group">
+                    <input ngControl="noteText" type="text" class="form-control" placeholder="Note...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Save Note!</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="media" *ngFor="#note of notes">
+            <div class="media-left">
+                <span class="margin-left-05 glyphicon glyphicon-paperclip"></span>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ note.title }} - {{ note.author }}</h4>
+                <p>{{ note.note }}</p>
+            </div>
+            <div class="media-right">
+                <!--<span (click)="vm.deleteNote(note._id)" class="margin-left-05 glyphicon glyphicon-trash"></span>-->
+            </div>
+        </div>
     </div>
 
 </div>

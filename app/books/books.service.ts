@@ -10,7 +10,6 @@ export interface IBook {
     isbn:String
 }
 
-
 @Injectable()
 export class BooksService {
 
@@ -47,8 +46,7 @@ export class BooksService {
                 let book = _.find(books, {id: id});
                 return book;
             })
-            .mergeMap(book => this.getBookDetailsByIsbn(book.isbn), (book, response) => response
-            );
+            .mergeMap(book => this.getBookDetailsByIsbn(book.isbn), (book, response) => response);
     }
 
     private handleError (error: Response) {
