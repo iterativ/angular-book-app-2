@@ -2,12 +2,13 @@
  * Created by christiancueni on 08/03/16.
  */
 import {Pipe} from "angular2/core";
+import {IBook} from './books.service';
 
 @Pipe({
     name: "search"
 })
 export class SearchPipe{
-    transform(value, args?){
+    transform(value:IBook[], args?){
         let [query] = args;
 
         if (!value) {

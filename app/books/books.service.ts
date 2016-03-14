@@ -4,10 +4,10 @@ import {Observable} from 'rxjs/Observable';
 import { Http, Response } from 'angular2/http';
 
 export interface IBook {
-    id:Number,
-    title:String,
-    author:String,
-    isbn:String
+    id:number,
+    title:string,
+    author:string,
+    isbn:string
 }
 
 @Injectable()
@@ -24,16 +24,16 @@ export class BooksService {
             .catch(this.handleError);
     }
 
-    getBook(id:Number):Observable<IBook> {
+    getBook(id:number):Observable<any> {
         return this.http.get(this.booksUrl)
             .map(res =>  res.json())
-            .map((books) => {
+            .map((books:Object[]) => {
                 _.find(books, {id: id});
             })
             .catch(this.handleError);
     }
 
-    getBookDetailsByIsbn(isbn:String):Observable<IBook>  {
+    getBookDetailsByIsbn(isbn:string):Observable<IBook>  {
         var url = this.googleBooksBaseUrl + isbn;
         return this.http.get(url)
             .map(res =>  res.json().items[0])

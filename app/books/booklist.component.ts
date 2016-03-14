@@ -13,7 +13,7 @@ import {BooksService} from './books.service';
 export class BookListComponent {
 
     books:Object[];
-    filter:String;
+    filter:string;
 
     constructor(private bookService:BooksService) {
 
