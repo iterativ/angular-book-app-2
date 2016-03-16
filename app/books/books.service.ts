@@ -24,11 +24,11 @@ export class BooksService {
             .catch(this.handleError);
     }
 
-    getBook(id:number):Observable<any> {
+    getBook(id:number):Observable<IBook> {
         return this.http.get(this.booksUrl)
             .map(res =>  res.json())
-            .map((books:Object[]) => {
-                _.find(books, {id: id});
+            .map((books:IBook[]) => {
+                return _.find(books, {id: id});
             })
             .catch(this.handleError);
     }
