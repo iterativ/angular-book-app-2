@@ -15,9 +15,6 @@ import {EmptyComponent} from './empty.component';
 ])
 export class BooksComponent {
 
-    constructor() {
-
-
-    }
+    constructor() {}
 
 }
