@@ -16,12 +16,12 @@ export class NoteService {
     private noteList:INote[] = [];
     private index: number = 0;
 
-    listNotes(bookId:number) {
-        return _.filter(this.noteList, note => note.bookId === bookId);
+    listNotes(bookId:number):Promise<INote[]> {
+        return Promise.resolve(_.filter(this.noteList, note => note.bookId === bookId));
     }
 
 
-    saveNote(bookId:number, title:string, author:string, text:string):INote[]  {
+    saveNote(bookId:number, title:string, author:string, text:string):Promise<INote[]>  {
         let newNote = {
             id: this.index,
             bookId: bookId,
@@ -31,17 +31,15 @@ export class NoteService {
         };
         this.noteList.push(newNote);
         this.index++;
-        return this.listNotes(bookId);
+        return Promise.resolve(this.listNotes(bookId));
     }
 
-    deleteNote(noteId):INote[] {
-        console.log(noteId);
+    deleteNote(noteId):Promise<INote[]> {
         _.remove(this.noteList, (note) => {
             console.log(note, noteId);
             return note.id === noteId
         });
-        console.log(this.noteList);
-        return this.noteList;
+        return Promise.resolve(this.noteList);
     }
 }
 

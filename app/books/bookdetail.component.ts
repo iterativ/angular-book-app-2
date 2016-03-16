@@ -34,7 +34,7 @@ export class BookDetailComponent implements OnActivate {
         });
 
         let notesPromise = new Promise((resolve) => {
-            this.notes = this.noteService.listNotes(id);
+            this.noteService.listNotes(id).then(noteList => this.notes = noteList);
             console.log("notes", this.notes);
             resolve(true);
         });
@@ -42,14 +42,17 @@ export class BookDetailComponent implements OnActivate {
     }
 
     private saveNote(form) {
-        this.notes = this.noteService.saveNote(this.book.id, form.noteTitle, form.noteAuthor, form.noteText);
-        this.resetNote();
-        this.formActive = false;
-        setTimeout(()=> this.formActive=true, 0);
+        this.noteService.saveNote(this.book.id, form.noteTitle, form.noteAuthor, form.noteText)
+            .then((noteList) => {
+                this.notes = noteList;
+                this.resetNote();
+                this.formActive = false;
+                setTimeout(()=> this.formActive=true, 0);
+            });
     }
 
     private deleteNote(noteId) {
-        this.notes = this.noteService.deleteNote(noteId);
+        this.noteService.deleteNote(noteId).then(noteList => this.notes = noteList);
     }
 
     private resetNote() {
