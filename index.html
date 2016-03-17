@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- 1. Load libraries -->
+    <script src="node_modules/lodash/lodash.js"></script>
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
@@ -27,9 +28,6 @@
                     format: 'register',
                     defaultExtension: 'js'
                 }
-            },
-            paths: {
-                lodash: './node_modules/lodash/lodash.js'
             }
         });
         System.import('app/main')

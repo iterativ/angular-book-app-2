@@ -1,5 +1,4 @@
 import { Injectable } from 'angular2/core';
-import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
 import { Http, Response } from 'angular2/http';
 
